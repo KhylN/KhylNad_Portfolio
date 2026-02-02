@@ -1,10 +1,10 @@
-import ComingSoon from "@/components/comingSoon";
+import Updating from "@/components/Updating/updating";
 
 export default function Home() {
-  const isEditing = true;
-  if (isEditing) {
-    return <ComingSoon />;
+  const downTime = true;
+  if (downTime) {
+    return <Updating />;
   } else {
-    return <ComingSoon />;
+    return <Updating />;
   }
 }

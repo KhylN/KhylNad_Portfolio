@@ -1,6 +1,6 @@
-import NetworkDots from "@/components/NetworkDots";
+import NetworkDots from "@/components/ui/NetworkDots";
 
-export default function ComingSoon() {
+export default function Updating() {
   return (
     <main
       style={{
@@ -52,8 +52,29 @@ export default function ComingSoon() {
           Full-Stack Developer
         </p>
         <p style={{ marginTop: "1.5rem", opacity: 0.7 }}>
-          Portfolio coming soon.
+          Under Construction
+          <span className="loading-dots" aria-hidden="true">
+            <span>.</span>
+            <span>.</span>
+            <span>.</span>
+          </span>
         </p>
+        <style>{`
+          .loading-dots span {
+            display: inline-block;
+            animation: dotPulse 1.2s infinite ease-in-out;
+          }
+          .loading-dots span:nth-child(2) {
+            animation-delay: 0.2s;
+          }
+          .loading-dots span:nth-child(3) {
+            animation-delay: 0.4s;
+          }
+          @keyframes dotPulse {
+            0%, 80%, 100% { opacity: 0.2; transform: translateY(0); }
+            40% { opacity: 0.9; transform: translateY(-2px); }
+          }
+        `}</style>
       </div>
     </main>
   );
