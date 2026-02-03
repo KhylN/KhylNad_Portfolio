@@ -18,18 +18,34 @@
 :global(.heroGlow) {
   position: absolute;
   inset: auto 0 0 0;
-  height: 40vh;
+  height: 55vh;
   background: radial-gradient(
     closest-side,
-    rgba(99, 140, 255, 0.35),
-    rgba(33, 44, 80, 0.2),
+    rgba(99, 140, 255, 0.38),
+    rgba(33, 44, 80, 0.22),
     transparent
   );
   filter: blur(8px);
-  transform: translateY(40%);
+  transform: translateY(32%);
   z-index: 1;
 }
 
+:global(.heroSection)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -120px;
+  height: 220px;
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 15, 23, 0),
+    rgba(11, 15, 23, 0.65),
+    rgba(11, 15, 23, 1)
+  );
+  pointer-events: none;
+  z-index: 1;
+}
 :global(.heroArc) {
   position: absolute;
   left: 50%;
