@@ -1,0 +1,121 @@
+:global(.heroSection) {
+  min-height: calc(100vh - 96px);
+  display: grid;
+  align-items: start;
+  padding: 5rem 1.5rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+:global(.heroDotsMask) {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  mask-image: linear-gradient(to top, transparent 0 22%, black 30%);
+  -webkit-mask-image: linear-gradient(to top, transparent 0 22%, black 30%);
+}
+
+:global(.heroGlow) {
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 40vh;
+  background: radial-gradient(
+    closest-side,
+    rgba(99, 140, 255, 0.35),
+    rgba(33, 44, 80, 0.2),
+    transparent
+  );
+  filter: blur(8px);
+  transform: translateY(40%);
+  z-index: 1;
+}
+
+:global(.heroArc) {
+  position: absolute;
+  left: 50%;
+  bottom: -140px;
+  width: 140%;
+  height: 280px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 40px rgba(120, 160, 255, 0.25);
+  transform: translateX(-50%);
+  opacity: 0.8;
+  z-index: 1;
+}
+
+:global(.heroContent) {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  padding: 1.2rem 1.5rem;
+  transform: translateY(-12px);
+}
+
+:global(.heroTitle) {
+  font-size: clamp(3.2rem, 15vw, 28rem);
+  line-height: 1.05;
+  /* margin-top: 0.4rem; */
+  color: white;
+  letter-spacing: -0.02em;
+}
+
+:global(.heroName) {
+  display: block;
+  font-weight: 700;
+}
+
+:global(.heroSubtitle) {
+  display: block;
+  font-size: clamp(2rem, 4.6vw, 3.8rem);
+}
+
+:global(.heroEmphasis) {
+  display: block;
+  font-style: italic;
+  font-weight: 500;
+  color: rgba(220, 230, 255, 0.9);
+}
+
+:global(.heroLead) {
+  max-width: 800px;
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  margin-top: 1rem;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+:global(.heroActions) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.2rem;
+  justify-content: center;
+}
+
+:global(.heroPrimaryCta) {
+  padding: 0.85rem 1.9rem;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #d6e6ff, #8fb8ff);
+  color: #0a0b0f;
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: 0 14px 34px rgba(85, 140, 255, 0.4);
+}
+
+:global(.heroSecondaryCta) {
+  padding: 0.85rem 1.9rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+@media (max-width: 700px) {
+  :global(.heroSection) {
+    padding-top: 3.5rem;
+  }
+}

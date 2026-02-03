@@ -1,0 +1,191 @@
+:global(.navbarContainer) {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 1.25rem 1.5rem;
+}
+
+:global(.navbarBar) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0.85rem 1.25rem;
+  border-radius: 999px;
+  background: var(--nav-bg);
+  border: var(--nav-border);
+  box-shadow: var(--nav-shadow);
+  backdrop-filter: var(--nav-blur, none);
+  -webkit-backdrop-filter: var(--nav-blur, none);
+}
+
+:global(.navbarBrand) {
+  display: inline-flex;
+  align-items: center;
+}
+
+:global(.navbarBrandIcon) {
+  width: 56px;
+  height: 30px;
+}
+
+:global(.navbarLinks) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 0.45rem 0.9rem;
+}
+
+:global(.navbarLink) {
+  position: relative;
+  text-decoration: none;
+  color: var(--link-color);
+  text-transform: var(--link-transform, none);
+  letter-spacing: var(--link-spacing, normal);
+  font-size: var(--link-size, 0.95rem);
+  transition:
+    color 200ms ease,
+    opacity 200ms ease;
+}
+
+:global(.navbarLinkInner) {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.7rem;
+  transition: color 200ms ease;
+}
+
+:global(.navbarPill) {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 34px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  transition: transform 260ms ease, width 260ms ease, opacity 200ms ease;
+  transform: translateY(-50%);
+  opacity: 0.95;
+  pointer-events: none;
+}
+
+:global(.navbarPill)::after {
+  content: "";
+  position: absolute;
+  left: 14%;
+  right: 14%;
+  bottom: 6px;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(140, 190, 255, 0),
+    rgba(140, 190, 255, 0.9),
+    rgba(140, 190, 255, 0)
+  );
+  box-shadow: 0 0 12px rgba(140, 190, 255, 0.35);
+  opacity: 0.7;
+}
+
+@media (max-width: 900px) {
+  :global(.navbarPill) {
+    display: none;
+  }
+}
+
+/* Removed hover underline to avoid double glow; pill glow handles highlight */
+
+:global(.navbarLink:hover),
+:global(.navbarLink:focus-visible) {
+  color: #ffffff;
+}
+
+:global(.navbarLink:hover)::after,
+:global(.navbarLink:focus-visible)::after {
+  transform: scaleX(1);
+}
+
+:global(.navbarCta) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.3rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+  color: var(--cta-color);
+  background: var(--cta-bg);
+  border: var(--cta-border, none);
+  box-shadow: var(--cta-shadow, none);
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    filter 220ms ease;
+}
+
+:global(.navbarCta:hover),
+:global(.navbarCta:focus-visible) {
+  transform: translateY(-1px) scale(1.02);
+  filter: brightness(1.05);
+}
+
+:global(.navbarCta:active) {
+  transform: translateY(0) scale(0.99);
+}
+
+:global(.navbarVariantMinimal) {
+  --nav-border: 1px solid rgba(255, 255, 255, 0.08);
+  --nav-bg: rgba(8, 10, 16, 0.45);
+  --nav-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  --nav-blur: blur(8px);
+  --link-color: rgba(255, 255, 255, 0.75);
+  --cta-color: #0a0b0f;
+  --cta-bg: linear-gradient(135deg, #cfe4ff, #8bb8ff);
+  --cta-shadow: 0 8px 20px rgba(85, 140, 255, 0.35);
+}
+
+:global(.navbarVariantBold) {
+  --nav-border: 1px solid rgba(120, 190, 255, 0.35);
+  --nav-bg: linear-gradient(
+    135deg,
+    rgba(10, 14, 24, 0.9),
+    rgba(10, 14, 24, 0.65)
+  );
+  --nav-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.45), inset 0 0 25px rgba(100, 180, 255, 0.08);
+  --link-color: rgba(210, 235, 255, 0.9);
+  --link-transform: uppercase;
+  --link-spacing: 0.14em;
+  --link-size: 0.78rem;
+  --cta-color: #071018;
+  --cta-bg: linear-gradient(135deg, #7cf3ff, #4f9cff);
+  --cta-shadow: 0 10px 26px rgba(79, 156, 255, 0.55);
+  --cta-border: none;
+}
+
+:global(.navbarVariantGlass) {
+  --nav-border: 1px solid rgba(255, 255, 255, 0.2);
+  --nav-bg: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.08),
+    rgba(255, 255, 255, 0.02)
+  );
+  --nav-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  --nav-blur: blur(14px) saturate(120%);
+  --link-color: rgba(255, 255, 255, 0.85);
+  --cta-color: #f8f9ff;
+  --cta-bg: rgba(255, 255, 255, 0.12);
+  --cta-border: 1px solid rgba(255, 255, 255, 0.25);
+  --cta-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+}

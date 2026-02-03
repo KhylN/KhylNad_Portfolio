@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import "./NetworkDots.module.css";
 
 type Particle = {
   x: number;
@@ -46,8 +47,8 @@ export default function NetworkDots() {
       particles = Array.from({ length: density }, () => ({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.4,
-        vy: (Math.random() - 0.5) * 0.4,
+        vx: (Math.random() - 0.5) * 0.12,
+        vy: (Math.random() - 0.5) * 0.12,
         r: Math.random() * 1.4 + 0.6,
       }));
     };
@@ -77,6 +78,10 @@ export default function NetworkDots() {
       ctx.clearRect(0, 0, width, height);
 
       for (const p of particles) {
+        // Soft damping to prevent velocity buildup over time
+        p.vx *= 0.995;
+        p.vy *= 0.995;
+
         p.x += p.vx;
         p.y += p.vy;
 
@@ -110,8 +115,8 @@ export default function NetworkDots() {
           const dy = p.y - mouse.y;
           const distSq = dx * dx + dy * dy;
           if (distSq < 180 * 180) {
-            p.vx += dx * 0.00003;
-            p.vy += dy * 0.00003;
+            p.vx += dx * 0.00001;
+            p.vy += dy * 0.00001;
           }
           if (distSq < 170 * 170) {
             const alpha = 1 - distSq / (170 * 170);
@@ -146,18 +151,6 @@ export default function NetworkDots() {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      aria-hidden="true"
-      style={{
-        position: "absolute",
-        inset: 0,
-        width: "100%",
-        height: "100%",
-        pointerEvents: "none",
-        zIndex: 0,
-        opacity: 0.9,
-      }}
-    />
+    <canvas ref={canvasRef} aria-hidden="true" className="networkDotsCanvas" />
   );
 }

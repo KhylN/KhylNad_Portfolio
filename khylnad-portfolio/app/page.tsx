@@ -1,10 +1,22 @@
+import Navbar from "@/components/layout/Navbar";
+import Hero from "@/components/sections/Hero";
 import Updating from "@/components/Updating/updating";
+import "./page.module.css";
 
 export default function Home() {
-  const downTime = true;
+  const downTime = false;
   if (downTime) {
-    return <Updating />;
-  } else {
-    return <Updating />;
+    return (
+      <div className="pageRoot">
+        <Updating showBackground={false} />
+      </div>
+    );
   }
+
+  return (
+    <div className="pageRoot">
+      <Navbar variant="glass" />
+      <Hero />
+    </div>
+  );
 }
