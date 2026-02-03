@@ -15,7 +15,7 @@ export default function Home() {
   }
 
   return (
-    <div className="pageRoot">
+    <div className="pageRoot" id="top">
       <Navbar variant="glass" />
       <Hero />
       <About />

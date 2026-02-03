@@ -25,7 +25,7 @@
     rgba(33, 44, 80, 0.22),
     transparent
   );
-  filter: blur(8px);
+  filter: blur(14px);
   transform: translateY(32%);
   z-index: 1;
 }
@@ -46,17 +46,29 @@
   pointer-events: none;
   z-index: 1;
 }
+
+:global(.heroSection) {
+  background-image: radial-gradient(
+    50% 18% at 50% 72%,
+    rgba(11, 15, 23, 0.5),
+    rgba(11, 15, 23, 0)
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
 :global(.heroArc) {
   position: absolute;
   left: 50%;
-  bottom: -140px;
+  bottom: -100px;
   width: 140%;
   height: 280px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 40px rgba(120, 160, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow:
+    0 0 60px rgba(120, 160, 255, 0.35),
+    inset 0 0 20px rgba(120, 160, 255, 0.15);
   transform: translateX(-50%);
-  opacity: 0.8;
+  opacity: 0.9;
   z-index: 1;
 }
 

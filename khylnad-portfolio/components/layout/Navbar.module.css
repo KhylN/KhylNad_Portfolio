@@ -19,6 +19,29 @@
   box-shadow: var(--nav-shadow);
   backdrop-filter: var(--nav-blur, none);
   -webkit-backdrop-filter: var(--nav-blur, none);
+  outline: 1px solid rgba(255, 255, 255, 0.12);
+  outline-offset: -1px;
+  position: relative;
+}
+
+:global(.navbarBar)::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: radial-gradient(
+      circle at 30% 20%,
+      rgba(255, 255, 255, 0.08),
+      transparent 60%
+    ),
+    linear-gradient(180deg, rgba(8, 10, 16, 0.65), rgba(8, 10, 16, 0.85));
+  pointer-events: none;
+  z-index: 0;
+}
+
+:global(.navbarBar) > * {
+  position: relative;
+  z-index: 1;
 }
 
 :global(.navbarBrand) {
@@ -51,6 +74,7 @@
   transition:
     color 200ms ease,
     opacity 200ms ease;
+  text-shadow: 0 2px 14px rgba(5, 8, 16, 0.9);
 }
 
 :global(.navbarLinkInner) {
@@ -131,6 +155,7 @@
     transform 220ms ease,
     box-shadow 220ms ease,
     filter 220ms ease;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
 }
 
 :global(.navbarCta:hover),
@@ -177,15 +202,15 @@
   --nav-border: 1px solid rgba(255, 255, 255, 0.2);
   --nav-bg: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.08),
-    rgba(255, 255, 255, 0.02)
+    rgba(10, 13, 20, 0.92),
+    rgba(10, 13, 20, 0.8)
   );
   --nav-shadow:
-    0 12px 35px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.2);
-  --nav-blur: blur(14px) saturate(120%);
-  --link-color: rgba(255, 255, 255, 0.85);
+    0 18px 50px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.32);
+  --nav-blur: blur(18px) saturate(140%);
+  --link-color: rgba(255, 255, 255, 0.98);
   --cta-color: #f8f9ff;
-  --cta-bg: rgba(255, 255, 255, 0.12);
-  --cta-border: 1px solid rgba(255, 255, 255, 0.25);
-  --cta-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+  --cta-bg: rgba(255, 255, 255, 0.3);
+  --cta-border: 1px solid rgba(255, 255, 255, 0.3);
+  --cta-shadow: 0 14px 32px rgba(0, 0, 0, 0.45);
 }

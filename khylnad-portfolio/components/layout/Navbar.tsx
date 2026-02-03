@@ -8,7 +8,7 @@ import "./Navbar.module.css";
 type NavbarVariant = "minimal" | "bold" | "glass";
 
 const links = [
-  { href: "#home", label: "Home" },
+  { href: "#top", label: "Home" },
   { href: "#about", label: "About" },
   { href: "#groups", label: "My Groups" },
   { href: "#projects", label: "Projects" },
