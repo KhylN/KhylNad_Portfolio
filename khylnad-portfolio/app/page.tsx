@@ -5,7 +5,7 @@ import Updating from "@/components/Updating/updating";
 import "./page.module.css";
 
 export default function Home() {
-  const downTime = false;
+  const downTime = true;
   if (downTime) {
     return (
       <div className="pageRoot">
