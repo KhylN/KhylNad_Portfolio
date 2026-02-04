@@ -238,6 +238,14 @@
   letter-spacing: 0.08em;
 }
 
+:global(.aboutExternalLinkIcon) {
+  max-width: 0.6em;
+  max-height: 0.6em;
+  margin-left: 0.2em;
+  vertical-align: middle;
+  fill: rgba(120, 160, 255, 0.9);
+}
+
 @keyframes location-sonar {
   0% {
     opacity: 0;

@@ -3,6 +3,7 @@
 import "./About.module.css";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
 export default function About() {
   return (
@@ -60,7 +61,15 @@ export default function About() {
               <p className="aboutLocationLabel">Education</p>
               <h3 className="aboutLocationTitle">BSc in Computer Science</h3>
               <p className="aboutLocationMeta">Minor in Mathematics</p>
-              <p className="aboutLocationTime">University of Alberta</p>
+              <a
+                className="aboutLocationTime"
+                href="https://www.ualberta.ca/en/index.html"
+                target="_blank"
+                rel="noopener"
+              >
+                University of Alberta
+                <OpenInNewIcon className="aboutExternalLinkIcon" />
+              </a>
             </div>
           </div>
         </div>
