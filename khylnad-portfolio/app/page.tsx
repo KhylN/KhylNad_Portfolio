@@ -2,6 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
 import MyGroups from "@/components/sections/MyGroups";
+import Projects from "@/components/sections/Projects";
 import Updating from "@/components/Updating/updating";
 import "./page.module.css";
 
@@ -21,6 +22,7 @@ export default function Home() {
       <Hero />
       <About />
       <MyGroups />
+      <Projects />
     </div>
   );
 }
