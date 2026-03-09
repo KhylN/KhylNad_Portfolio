@@ -213,9 +213,10 @@
 }
 
 :global(.groupToolIcon) {
-  font-size: 1.05rem;
-  line-height: 1;
-  color: rgba(200, 220, 255, 0.95);
+  width: 1.05rem;
+  height: 1.05rem;
+  line-height: 0;
+  flex-shrink: 0;
 }
 
 @media (min-width: 900px) {

@@ -1,6 +1,12 @@
 "use client";
 
-import { useCallback, useLayoutEffect, useRef, useState } from "react";
+import {
+  type CSSProperties,
+  useCallback,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import StackIcon, { type IconName } from "tech-stack-icons";
 import "./Projects.module.css";
@@ -26,6 +32,7 @@ const toolIcons: Partial<Record<string, IconName>> = {
   SCSS: "sass",
   PostgreSQL: "postgresql",
   Heroku: "heroku",
+  Axios: "axios",
   NumPy: "numpy",
   Pandas: "pandas",
   Java: "java",
@@ -36,6 +43,27 @@ const toolIcons: Partial<Record<string, IconName>> = {
   "Firebase Analytics": "firebase",
   "Google Maps": "google",
   "C++": "c++",
+  Figma: "figma",
+};
+
+const deviconIcons: Partial<Record<string, string>> = {
+  Axios: "axios-plain",
+  SciPy: "scipy-original",
+  Gradle: "gradle-plain",
+};
+
+const deviconColors: Partial<Record<string, string>> = {
+  Gradle: "#56c3d6",
+};
+
+const customSvgIcons: Partial<Record<string, string>> = {
+  CMake: "/icons/cmake-tricolor.svg",
+};
+
+const stackIconStyles: Partial<Record<string, CSSProperties>> = {
+  Heroku: {
+    filter: "brightness(1.45) saturate(1.15)",
+  },
 };
 
 const firstRow: Project[] = [
@@ -63,11 +91,11 @@ const firstRow: Project[] = [
       "React",
       "TypeScript",
       "Django",
-      "Django REST Framework",
       "Python",
       "SCSS",
       "PostgreSQL",
       "Heroku",
+      "Figma",
     ],
     imageSrc: "/MecSimCalcPreview.png",
     imageAlt: "AzureDSN preview",
@@ -106,10 +134,10 @@ const firstRow: Project[] = [
       "Firebase Storage",
       "Firebase Analytics",
       "Google Maps",
+      "Gradle",
       "OSMDroid",
       "ZXing",
       "OkHttp",
-      "Gradle",
     ],
     imageSrc: "/MecSimCalcPreview.png",
     imageAlt: "NoStack preview",
@@ -208,13 +236,36 @@ function ProjectItem({
             <ul className="projectTags">
               {project.tags.map((tag) => {
                 const iconClass = toolIcons[tag] ?? null;
+                const deviconClass = deviconIcons[tag] ?? null;
+                const customSvgIcon = customSvgIcons[tag] ?? null;
                 return (
                   <li key={tag} className="projectTagChip">
-                    {iconClass && (
+                    {customSvgIcon && (
+                      <img
+                        src={customSvgIcon}
+                        alt=""
+                        aria-hidden="true"
+                        className="projectTagCustomIcon"
+                        loading="lazy"
+                      />
+                    )}
+                    {deviconClass && (
+                      <i
+                        className={`devicon-${deviconClass} colored projectTagDevicon`}
+                        style={
+                          deviconColors[tag]
+                            ? { color: deviconColors[tag] }
+                            : undefined
+                        }
+                        aria-hidden="true"
+                      />
+                    )}
+                    {!customSvgIcon && !deviconClass && iconClass && (
                       <StackIcon
                         name={iconClass}
                         variant="light"
                         className="projectTagIcon"
+                        style={stackIconStyles[tag]}
                       />
                     )}
                     {tag}

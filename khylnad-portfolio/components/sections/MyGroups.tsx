@@ -1,24 +1,26 @@
 "use client";
 
 import type { CSSProperties } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faJs, faOpenai } from "@fortawesome/free-brands-svg-icons";
+import StackIcon, { type IconName } from "tech-stack-icons";
 import "./MyGroups.module.css";
 
-const toolIcons: Record<string, string | null> = {
-  React: "react-original",
-  "Next.js": "nextjs-original",
-  TypeScript: "typescript-plain",
-  Javascript: "javascript-plain",
-  Python: "python-plain",
-  Django: "django-plain",
-  Postgres: "postgresql-plain",
-  Redis: "redis-plain",
-  Celery: "celery-plain",
-  Docker: "docker-plain",
-  AWS: "amazonwebservices-plain",
-  NumPy: "numpy-plain",
-  LangChain: null,
-  ChatGPT: null,
-  Claude: null,
+const toolIcons: Partial<Record<string, IconName>> = {
+  React: "react",
+  "Next.js": "nextjs2",
+  TypeScript: "typescript",
+  Python: "python",
+  Django: "django",
+  Postgres: "postgresql",
+  Redis: "redis",
+  GraphQL: "graphql",
+  Docker: "docker",
+  AWS: "aws",
+  NumPy: "numpy",
+  Figma: "figma",
+  LangChain: "langchain",
+  Claude: "claude",
 };
 
 const groups = [
@@ -43,6 +45,7 @@ const groups = [
       "Python",
       "Javascript",
       "Django",
+      "Figma",
       "LangChain",
       "ChatGPT",
       "Claude",
@@ -69,8 +72,8 @@ const groups = [
       "Javascript",
       "Django",
       "Postgres",
+      "GraphQL",
       "Redis",
-      "Celery",
       "Docker",
     ],
     variant: "secondary",
@@ -127,12 +130,28 @@ export default function MyGroups() {
               <div className="groupCardTools">
                 {group.tools.map((tool) => {
                   const iconClass = toolIcons[tool] ?? null;
+                  const isJavascript = tool === "Javascript";
+                  const isChatGPT = tool === "ChatGPT";
                   return (
                     <span key={tool} className="groupToolChip">
-                      {iconClass && (
-                        <i
-                          className={`devicon-${iconClass} groupToolIcon`}
-                          aria-hidden="true"
+                      {isJavascript && (
+                        <FontAwesomeIcon
+                          icon={faJs}
+                          className="groupToolIcon"
+                          style={{ color: "#f7df1e" }}
+                        />
+                      )}
+                      {isChatGPT && (
+                        <FontAwesomeIcon
+                          icon={faOpenai}
+                          className="groupToolIcon"
+                        />
+                      )}
+                      {!isJavascript && !isChatGPT && iconClass && (
+                        <StackIcon
+                          name={iconClass}
+                          variant={tool === "AWS" ? "dark" : "light"}
+                          className="groupToolIcon"
                         />
                       )}
                       {tool}
