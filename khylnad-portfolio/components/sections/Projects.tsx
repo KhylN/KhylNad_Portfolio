@@ -13,10 +13,14 @@ import "./Projects.module.css";
 
 type Project = {
   title: string;
+  type: string;
   description: string;
   tags: string[];
   imageSrc: string;
   imageAlt: string;
+  imageFit?: CSSProperties["objectFit"];
+  imagePosition?: CSSProperties["objectPosition"];
+  imageBackground?: CSSProperties["background"];
   url: string;
 };
 
@@ -69,6 +73,7 @@ const stackIconStyles: Partial<Record<string, CSSProperties>> = {
 const firstRow: Project[] = [
   {
     title: "KhylNad Portfolio",
+    type: "Personal Portfolio",
     description:
       "A modern personal portfolio built to showcase my work, experience, and technical projects through a polished, responsive interface. It focuses on strong presentation, reusable UI, and clear project storytelling with tech-stack highlights throughout.",
     tags: [
@@ -79,12 +84,13 @@ const firstRow: Project[] = [
       "Tailwind CSS",
       "CSS",
     ],
-    imageSrc: "/MecSimCalcPreview.png",
+    imageSrc: "/ProjectKhylPortfolio.png",
     imageAlt: "KhylNad Portfolio preview",
     url: "https://github.com/KhylN/KhylNad_Portfolio",
   },
   {
     title: "AzureDSN",
+    type: "Distributed Social Platform",
     description:
       "A distributed social networking platform built as a full-stack team project, with a React frontend and Django REST backend. It supports core social features, API documentation, and deployment for federated interaction across connected groups.",
     tags: [
@@ -97,12 +103,13 @@ const firstRow: Project[] = [
       "Heroku",
       "Figma",
     ],
-    imageSrc: "/MecSimCalcPreview.png",
+    imageSrc: "/ProjectAzureDSN.png",
     imageAlt: "AzureDSN preview",
     url: "https://github.com/cmput404-azure/AzureDSN",
   },
   {
     title: "NeuRomance",
+    type: "Hackathon Product Concept",
     description:
       "A hackathon proof of concept for a dating platform that explores biosignal synchronization as a way to predict romantic compatibility. It combines a modern web interface with backend data processing to turn brainwave-based matching into an interactive product concept.",
     tags: [
@@ -118,12 +125,13 @@ const firstRow: Project[] = [
       "SciPy",
       "Muse JS",
     ],
-    imageSrc: "/PipelineReliabilityPreview.png",
+    imageSrc: "/ProjectNeuRomance.png",
     imageAlt: "NeuRomance preview",
     url: "https://github.com/KhylN/NeuRomance_NatHacks2024",
   },
   {
     title: "NoStack",
+    type: "Android Mobile App",
     description:
       "An Android mobile application developed as a CMPUT 301 team project, built around native app architecture and real mobile workflows. The project integrates cloud services, mapping, QR functionality, and polished loading/navigation patterns for a more complete product experience.",
     tags: [
@@ -139,8 +147,11 @@ const firstRow: Project[] = [
       "ZXing",
       "OkHttp",
     ],
-    imageSrc: "/MecSimCalcPreview.png",
+    imageSrc: "/ProjectNoStack.png",
     imageAlt: "NoStack preview",
+    imageFit: "contain",
+    imagePosition: "center",
+    imageBackground: "#8ad1f2",
     url: "https://github.com/CMPUT301W24T27/NoStack",
   },
 ];
@@ -148,11 +159,13 @@ const firstRow: Project[] = [
 const secondRow: Project[] = [
   {
     title: "CMPUT350 StarCraft II Bot",
+    type: "Strategy Game AI Bot",
     description:
       "A StarCraft II bot built in C++ that automates gameplay decisions using the SC2 API. It was developed as part of CMPUT 350 and focuses on game-state management, strategy logic, and bot behavior against built-in AI or ladder-based opponents.",
     tags: ["C++", "CMake", "StarCraft II API", "SC2 Ladder Server"],
-    imageSrc: "/MecSimCalcPreview.png",
+    imageSrc: "/ProjectStarCraftBot.png",
     imageAlt: "CMPUT350 StarCraft II Bot preview",
+    imagePosition: "center",
     url: "https://github.com/KhylN/CMPUT350-project",
   },
 ];
@@ -193,15 +206,23 @@ function ProjectItem({
   return (
     <div className="projectItem" data-open={isOpen ? "true" : "false"}>
       <div className="projectSummary">
-        <a
-          className="projectSummaryTitle"
-          href={project.url}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {project.title}
-          <OpenInNewIcon className="projectExternalLinkIcon" />
-        </a>
+        <div className="projectSummaryCopy">
+          <div className="projectCardMeta">
+            <span className="projectCardIndex">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span className="projectCardType">{project.type}</span>
+          </div>
+          <a
+            className="projectSummaryTitle"
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {project.title}
+            <OpenInNewIcon className="projectExternalLinkIcon" />
+          </a>
+        </div>
         <button
           type="button"
           className="projectToggleButton"
@@ -223,11 +244,18 @@ function ProjectItem({
         data-open={isOpen ? "true" : "false"}
       >
         <div ref={panelRef} className="projectPanel" aria-hidden={!isOpen}>
-          <div className="projectPanelMedia">
+          <div
+            className="projectPanelMedia"
+            style={{ background: project.imageBackground }}
+          >
             <img
               src={project.imageSrc}
               alt={project.imageAlt}
               className="projectPanelImage"
+              style={{
+                objectFit: project.imageFit,
+                objectPosition: project.imagePosition,
+              }}
               loading="lazy"
             />
           </div>
