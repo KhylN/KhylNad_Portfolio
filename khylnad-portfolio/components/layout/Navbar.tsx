@@ -125,9 +125,9 @@ export default function Navbar({
           ))}
         </div>
 
-        <a href="/KhylNadCV.pdf" download className="navbarCta">
+        {/*<a href="/KhylNadCV.pdf" download className="navbarCta">
           Download CV
-        </a>
+        </a>*/}
       </nav>
     </div>
   );
