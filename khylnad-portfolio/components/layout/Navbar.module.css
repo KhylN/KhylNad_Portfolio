@@ -64,6 +64,14 @@
   padding: 0.45rem 0.9rem;
 }
 
+@media (min-width: 901px) {
+  :global(.navbarLinks) {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
 :global(.navbarLink) {
   position: relative;
   text-decoration: none;
